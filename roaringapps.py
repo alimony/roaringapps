@@ -115,7 +115,7 @@ def main():
             print_message('\nFound no compatibility data for %s' % application_name, verbose=True)
             print_wrapper_message('compatibility_data_not_found\t%s' % application_name)
 
-    print_message('\nFound %d incompatible applications.' % number_of_incompatible_applications)
+    print_message('\nFound %d incompatible application%s.' % (number_of_incompatible_applications, 's'[number_of_incompatible_applications == 1:]))
     print_wrapper_message('found_number_of_incompatible_applications\t%d' % number_of_incompatible_applications)
 
 def get_argument_parser():
