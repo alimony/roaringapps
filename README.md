@@ -5,6 +5,17 @@ This script will look for installed applications on your computer, and check eac
 
 Usage
 =====
+Just run the script:
+
+```
+./roaringapps.py
+```
+
+You might need to make it executable first:
+
+```
+chmod +x roaringapps.py
+```
 
 Run without any options, the script will look for installed applications in the `/Applications` and `~/Applications` folders, and report any incompatibilities with either Mac OS X 10.7 or 10.8.
 
