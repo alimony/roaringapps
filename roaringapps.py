@@ -79,7 +79,7 @@ def main():
     print_message('Found %d installed application%s.' % (number_of_applications, 's'[number_of_applications == 1:]))
     print_wrapper_message('found_number_of_installed_application\t%d' % number_of_applications)
 
-    remote_application_names = compatibility_data.keys()
+    remote_application_names = dict([(value['title'], key) for (key, value) in compatibility_data.items()])
 
     if args.VERBOSE:
         print_message('Displaying compatibility data for all installed applications.')
@@ -89,7 +89,7 @@ def main():
     number_of_incompatible_applications = 0
     for application_name in installed_applications:
         if application_name in remote_application_names:
-            application_data = compatibility_data[application_name]
+            application_data = compatibility_data[remote_application_names[application_name]]
             lion_status = LION_STATUSES[application_data['status']]
             lion_ok = lion_status == 'OK'
             mountain_lion_status = MOUNTAIN_LION_STATUSES[application_data['mtn_status']]
