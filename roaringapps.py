@@ -43,6 +43,7 @@ MOUNTAIN_LION_STATUSES = {
     'doesnt_work':   'Does not work'
 }
 
+
 def main():
     # When combining the add_argument action 'append' and a default value that
     # is a list, argparse will oddly enough always add that default list to
@@ -118,6 +119,7 @@ def main():
     print_message('\nFound %d incompatible application%s.' % (number_of_incompatible_applications, 's'[number_of_incompatible_applications == 1:]))
     print_wrapper_message('found_number_of_incompatible_applications\t%d' % number_of_incompatible_applications)
 
+
 def get_argument_parser():
     parser = argparse.ArgumentParser(
         description='''Check which of your installed applications are compatible
@@ -178,6 +180,7 @@ def get_argument_parser():
 
     return parser
 
+
 def cache_is_outdated():
     cache_is_outdated = True
     try:
@@ -190,6 +193,7 @@ def cache_is_outdated():
 
     return cache_is_outdated
 
+
 def get_value_from_cache(key):
     value = None
     cache = shelve.open(CACHE_FILE, protocol=-1)
@@ -198,10 +202,12 @@ def get_value_from_cache(key):
 
     return value
 
+
 def save_to_cache(key, value):
     cache = shelve.open(CACHE_FILE, protocol=-1)
     cache[key] = value
     cache.close()
+
 
 def get_installed_applications():
     print_message('Looking for installed applications...')
@@ -244,11 +250,13 @@ def get_installed_applications():
 
     return installed_applications
 
+
 def get_cached_applications():
     print_message('Using cached list of installed applications.')
     print_wrapper_message('using_cached_installed_applications')
 
     return get_value_from_cache(INSTALLED_APPLICATIONS_KEY)
+
 
 def get_compatibility_data():
     print_message('Fetching compatibility data...')
@@ -265,23 +273,28 @@ def get_compatibility_data():
 
     return compatibility_data
 
+
 def get_cached_compatibility_data():
     print_message('Using cached compatibility data.')
     print_wrapper_message('using_cached_compatibility_data')
 
     return get_value_from_cache(COMPATIBILITY_DATA_KEY)
 
+
 def print_lion_message(message, verbose=False):
     if args.ONLY_PRINT_LION_DATA or PRINT_ALL_DATA:
         print_message(message, verbose)
+
 
 def print_mountain_lion_message(message, verbose=False):
     if args.ONLY_PRINT_MOUNTAIN_LION_DATA or PRINT_ALL_DATA:
         print_message(message, verbose)
 
+
 def print_message(message, verbose=False):
     if (not verbose or (verbose and args.VERBOSE)) and not args.WRAPPER_MODE:
         print message
+
 
 def print_wrapper_message(message):
     if args.WRAPPER_MODE:
