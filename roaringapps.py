@@ -193,7 +193,7 @@ def cache_is_outdated():
 def get_value_from_cache(key):
     value = None
     cache = shelve.open(CACHE_FILE, protocol=-1)
-    if cache.has_key(key):
+    if key in cache:
         value = cache[key]
 
     return value
